@@ -24,13 +24,17 @@ defmodule Rank do
   | Two
   | Ace
 end
-
+# jhj
 defmodule Card do
-  use Suit, Rank
+  use Discunion, Suit, Rank
   def new(rank, suit) do
     %Card{
       rank: Rank,
       suit: Suit
     }
   end
+end
+
+defimpl Eq, for: Card do
+  def eq(card), do: 1
 end
