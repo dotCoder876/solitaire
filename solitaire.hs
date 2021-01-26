@@ -4,25 +4,25 @@ data Rank = Ace | Two | Three | Four | Five | Six | Seven | Eight | Nine | Ten |
   deriving Eq
 
 instance Show Rank where
-  show (Ace) = "A"
-  show (Two) = "2"
-  show (Three) = "3"
-  show (Four) = "4"
-  show (Five) = "5"
-  show (Six) = "6"
-  show (Seven) = "7"
-  show (Eight) = "8"
-  show (Nine) = "9"
-  show (Ten) = "T"
-  show (Jack) = "J"
-  show (Queen) = "Q"
-  show (King) = "K"
+  show Ace = "A"
+  show Two = "2"
+  show Three = "3"
+  show Four = "4"
+  show Five = "5"
+  show Six = "6"
+  show Seven = "7"
+  show Eight = "8"
+  show Nine = "9"
+  show Ten = "T"
+  show Jack = "J"
+  show Queen = "Q"
+  show King = "K"
 
 instance Show Suit where
-  show (Spades) = "S"
-  show (Hearts) = "H"
-  show (Clubs) = "C"
-  show (Diamonds) = "D"
+  show Spades = "S"
+  show Hearts = "H"
+  show Clubs = "C"
+  show Diamonds = "D"
 
 data Suit = Spades | Hearts | Clubs | Diamonds
   deriving Eq
@@ -45,7 +45,11 @@ shuffle xs = do
   map (a:) (shuffle (left ++ right))
 				
 deck :: Deck
-  [Card i j, i <- [Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King], j <- [Spades, Hearts, Clubs, Diamonds]]
+deck = [
+           Card i j, 
+           i <- [Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King], 
+           j <- [Spades, Hearts, Clubs, Diamonds]
+       ]
 
 pick :: Deck -> IO (Maybe Card, Deck)
 pick [] = return (Nothing, [])
